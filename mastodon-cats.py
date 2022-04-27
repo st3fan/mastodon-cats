@@ -14,9 +14,9 @@ from mastodon import Mastodon
 
 
 def pick_cat() -> Optional[str]:
-    images_queued = glob.glob("images-queued/*.jpeg")
-    image_path = random.choice(images_queued)
-    return image_path.split("/")[1]
+    if images_queued := glob.glob("images-queued/*.jpeg"):
+        image_path = random.choice(images_queued)
+        return image_path.split("/")[1]
 
 
 def toot_cat():
